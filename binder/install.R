@@ -9,4 +9,4 @@ install.packages("tibble")
 install.packages("stringr")
 install.packages("forcats")
 
-install.packages("testthat")
+devtools::install_github("nteract/papermillr")
