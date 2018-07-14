@@ -1,0 +1,15 @@
+Package: rjupyterbinder
+Title: Example of how to use R in Jupyter notebooks and make compatible with Binder
+Version: 0.0.1
+Authors@R: person("Matthew", "Feickert", email = "matthewfeickert@users.noreply.github.com",
+                  role = c("aut", "cre"))
+Description: Example of how to use R in Jupyter notebooks and make compatible with Binder.
+License: BSD 3-Clause
+LazyData: true
+URL: https://github.com/matthewfeickert/R-in-Jupyter-with-Binder
+BugReports: https://github.com/matthewfeickert/R-in-Jupyter-with-Binder/issues
+Depends:
+    R (>= 3.1.0)
+Imports: ggplot2
+Suggests: testthat
+Encoding: UTF-8

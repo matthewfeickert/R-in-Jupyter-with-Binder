@@ -1,0 +1,28 @@
+language: R
+sudo: false
+dist: trusty
+cache: packages
+r_packages:
+  - devtools
+r_github_packages:
+  - nteract/papermillr
+  - IRkernel/IRkernel
+before_script:
+  - source .travis.sh
+  - export PATH="$HOME/miniconda/bin:$PATH"
+  - create_conda_environment
+  - source activate test-environment
+  - pip install -U -q papermill
+  - R -e "IRkernel::installspec()"
+  - jupyter kernelspec list
+script:
+  # Run pytest -s to disable capturing of stdout and see prints
+  - pytest
+
+jobs:
+  include:
+  - r: release
+
+env:
+  global:
+  - MAKEFLAGS="-j 2"
