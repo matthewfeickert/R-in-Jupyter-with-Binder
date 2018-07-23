@@ -6,6 +6,7 @@ This repo was inspired from [a Tweet](https://twitter.com/Alex_Danvers/status/10
 > Disclaimer: I am a physicist and primarily a Python and C++ programmer and I don't use/know R. This repo is just what I know from being able to read code and understanding how Jupyter works.
 
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+[![DOI](https://zenodo.org/badge/140347900.svg)](https://zenodo.org/badge/latestdoi/140347900)
 [![Build Status](https://travis-ci.com/matthewfeickert/R-in-Jupyter-with-Binder.svg?branch=master)](https://travis-ci.com/matthewfeickert/R-in-Jupyter-with-Binder)
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/matthewfeickert/R-in-Jupyter-with-Binder/master?filepath=R-in-Jupyter-Example.ipynb)
 
