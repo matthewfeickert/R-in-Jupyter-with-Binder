@@ -5,16 +5,18 @@ cache: packages
 r_packages:
   - devtools
 r_github_packages:
-  - nteract/papermillr
   - IRkernel/IRkernel
+  - nteract/papermillr
 before_script:
   - source .travis.sh
   - export PATH="$HOME/miniconda/bin:$PATH"
   - create_conda_environment
   - source activate test-environment
+  - pip install -U -q pip setuptools wheel
   - pip install -U -q papermill
   - R -e "IRkernel::installspec()"
   - jupyter kernelspec list
+  - pip freeze
 script:
   # Run pytest -s to disable capturing of stdout and see prints
   - pytest
