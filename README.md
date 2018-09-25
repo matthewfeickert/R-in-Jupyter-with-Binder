@@ -151,7 +151,7 @@ If you now launch a Jupyter notebook server and open a `.Rmd` file the R Markdow
 
 To get R Markdown working in Binder simple create a [`requirements.txt`](https://github.com/matthewfeickert/R-in-Jupyter-with-Binder/blob/master/binder/requirements.txt) file in the `binder` directory and add `nbrmd` to it. Binder should take care of the rest!
 
-- Here's a minimal example using the [`Example_Rmd.Rmd`](https://github.com/matthewfeickert/R-in-Jupyter-with-Binder/blob/feature/expand-setup-docs/Example_Rmd.Rmd) file from this repository: [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/matthewfeickert/R-in-Jupyter-with-Binder/master?filepath=Example_Rmd.Rmd)
+- Here's a minimal example using the [`Example_Rmd.Rmd`](https://github.com/matthewfeickert/R-in-Jupyter-with-Binder/blob/master/Example_Rmd.Rmd) file from this repository: [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/matthewfeickert/R-in-Jupyter-with-Binder/master?filepath=Example_Rmd.Rmd)
 
 ## Further Reading and Resources
 
