@@ -7,7 +7,7 @@ def test_notebooks_nominal(tmpdir):
     # to check kernel name run:
     # jupyter kernelspec list
     common_kwargs = {
-        'output': str(output_nb),
+        'output_path': str(output_nb),
         'kernel_name': 'ir'
     }
 
@@ -21,7 +21,7 @@ def test_notebooks_nominal(tmpdir):
 def test_notebooks_alternative(tmpdir):
     output_nb = tmpdir.join('output.ipynb')
     common_kwargs = {
-        'output': str(output_nb),
+        'output_path': str(output_nb),
         # 'kernel_name': 'python{}'.format(sys.version_info.major)
         'kernel_name': 'ir'
     }
