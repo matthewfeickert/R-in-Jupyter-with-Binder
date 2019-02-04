@@ -8,7 +8,7 @@ This repo was inspired from [a Tweet](https://twitter.com/Alex_Danvers/status/10
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![DOI](https://zenodo.org/badge/140347900.svg)](https://zenodo.org/badge/latestdoi/140347900)
 [![Build Status](https://travis-ci.com/matthewfeickert/R-in-Jupyter-with-Binder.svg?branch=master)](https://travis-ci.com/matthewfeickert/R-in-Jupyter-with-Binder)
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/matthewfeickert/R-in-Jupyter-with-Binder/master?filepath=R-in-Jupyter-Example.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/matthewfeickert/R-in-Jupyter-with-Binder/master?filepath=R-in-Jupyter-Example.ipynb)
 
 ## Check it out first
 
@@ -23,7 +23,7 @@ Before learning how to setup R in Jupyter, first go check out how cool it is in 
 - [Automating testing alongside development with CI](#automating-testing-alongside-development-with-ci)
 - [Setting up a Binder environment](#setting-up-a-binder-environment)
 - [Preservation and DOI with Zenodo](#preservation-and-doi-with-zenodo)
-- [R Markdown in Jupyter with nbrmd](#r-markdown-in-jupyter-with-nbrmd)
+- [R Markdown in Jupyter with jupytext](#r-markdown-in-jupyter-with-jupytext)
 - [Further Reading and Resources](#further-reading-and-resources)
 - [Acknowledgements](#acknowledgements)
 
@@ -107,12 +107,12 @@ Additionally, GitLab offers [their own CI service](https://docs.gitlab.com/ee/ci
 The Binder team has done amazing work to make "Binderizing" a GitHub repository as simple as possible. In the case of getting an R computing environment many times all that you need (in addition to a `DESCRIPTION` file and maybe an `install.R`) is a `runtime.txt` file that dictates which daily snapshot of [MRAN](https://mran.microsoft.com/documents/rro/reproducibility) to use. See the [`binder`](https://github.com/matthewfeickert/R-in-Jupyter-with-Binder/tree/master/binder) directory for an example of what is needed to get this repository to run in Binder.
 
 - [Specifying an R environment with a runtime.txt file](https://mybinder.readthedocs.io/en/latest/sample_repos.html#specifying-an-r-environment-with-a-runtime-txt-file)
-   - Example Jupyter+R environment on Binder: [![Binder](http://mybinder.org/badge.svg)](http://mybinder.org/v2/gh/binder-examples/r/master?filepath=index.ipynb)
+   - Example Jupyter+R environment on Binder: [![Binder](http://mybinder.org/badge_logo.svg)](http://mybinder.org/v2/gh/binder-examples/r/master?filepath=index.ipynb)
 - [Binder FAQs](https://mybinder.readthedocs.io/en/latest/faq.html)
 
 You'll note that the "launch Binder" badge at the top of the `README` automatically launches into the `R-in-Jupyter-Example.ipynb` notebook. This was configured to do so, but the default Binder behavior is to launch the Jupyter server and then show the directory structure of the repository.
 
-To see that behavior launch Binder from here: [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/matthewfeickert/R-in-Jupyter-with-Binder/master)
+To see that behavior launch Binder from here: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/matthewfeickert/R-in-Jupyter-with-Binder/master)
 
 Once the server loads click on any file to open it in an editor or as a Jupyter notebook.
 
@@ -120,14 +120,14 @@ Once the server loads click on any file to open it in an editor or as a Jupyter 
 
 To further make your analysis code more robust you can preserve it and make it [citable by getting a DOI](https://guides.github.com/activities/citable-code/) for the project repository with [Zenodo](https://zenodo.org/). Activating version tracking on your GitHub repository with Zenodo will allow it to automatically freeze a version of the repository with each new version tag and then archive it. Additionally, Zenodo will create a DOI for your project and versioned DOIs for the project releases which can be added as a DOI badge. This makes it trivial for others to cite your work and allows you to indicate what version of your code was used in any publications.
 
-## R Markdown in Jupyter with [nbrmd](https://github.com/mwouts/nbrmd)
+## R Markdown in Jupyter with [jupytext](https://github.com/mwouts/jupytext)
 
 [R Markdown](https://rmarkdown.rstudio.com/) is a very popular way to present beautifully rendered R along Markdown in different forms of documents. However, it is source only and not dynamically interactive as the R and Markdown needed to be [rendered together with Pandoc](https://stackoverflow.com/questions/40563479/relationship-between-r-markdown-knitr-pandoc-and-bookdown) ([Pandoc](https://pandoc.org/) is awesome).
-> [nbrmd](https://github.com/mwouts/nbrmd) is a utility to open and run R markdown notebooks in Jupyter and save Jupyter notebooks as R markdown.
+> [jupytext](https://github.com/mwouts/jupytext) is a utility to open and run R markdown notebooks in Jupyter and save Jupyter notebooks as R markdown.
 
-- [Install nbrmd](https://github.com/mwouts/nbrmd#how-do-i-open-r-markdown-notebooks-in-jupyter)
+- [Install jupytext](https://github.com/mwouts/jupytext#installation)
 
-Once you have installed nbrmd create a Jupyter config with
+Once you have installed jupytext create a Jupyter config with
 
 ```
 jupyter notebook --generate-config
@@ -142,16 +142,16 @@ which creates the config file at
 Add the following line to the Jupyter config
 
 ```python
-c.NotebookApp.contents_manager_class = 'nbrmd.RmdFileContentsManager'
+c.NotebookApp.contents_manager_class = "jupytext.TextFileContentsManager"
 ```
 
 If you now launch a Jupyter notebook server and open a `.Rmd` file the R Markdown should now be rendered in the interactive environment of Jupyter!
 
 ### R Markdown in Jupyter in Binder
 
-To get R Markdown working in Binder simple create a [`requirements.txt`](https://github.com/matthewfeickert/R-in-Jupyter-with-Binder/blob/master/binder/requirements.txt) file in the `binder` directory and add `nbrmd` to it. Binder should take care of the rest!
+To get R Markdown working in Binder simple create a [`requirements.txt`](https://github.com/matthewfeickert/R-in-Jupyter-with-Binder/blob/master/binder/requirements.txt) file in the `binder` directory and add `jupytext` to it. Binder should take care of the rest!
 
-- Here's a minimal example using the [`Example_Rmd.Rmd`](https://github.com/matthewfeickert/R-in-Jupyter-with-Binder/blob/master/Example_Rmd.Rmd) file from this repository: [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/matthewfeickert/R-in-Jupyter-with-Binder/master?filepath=Example_Rmd.Rmd)
+- Here's a minimal example using the [`Example_Rmd.Rmd`](https://github.com/matthewfeickert/R-in-Jupyter-with-Binder/blob/master/Example_Rmd.Rmd) file from this repository: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/matthewfeickert/R-in-Jupyter-with-Binder/master?filepath=Example_Rmd.Rmd)
 
 ## Further Reading and Resources
 
@@ -163,5 +163,5 @@ To get R Markdown working in Binder simple create a [`requirements.txt`](https:/
 ## Acknowledgements
 
 - The [Jupyter and Binder team](https://github.com/orgs/jupyterhub/people) for making amazing open source software
-- [Marc Wouts](https://github.com/mwouts) for creating [nbrmd](https://github.com/mwouts/nbrmd)
+- [Marc Wouts](https://github.com/mwouts) for creating [jupytext](https://github.com/mwouts/jupytext)
 - [Achintya Rao](https://github.com/RaoOfPhysics) for insightful feedback, thoughtful discussion, and excellent ideas
