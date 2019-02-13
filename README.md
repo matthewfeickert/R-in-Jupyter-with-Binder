@@ -18,6 +18,7 @@ Before learning how to setup R in Jupyter, first go check out how cool it is in 
 
 - [Requirements](#requirements)
 - [Setup and Installation](#setup-and-installation)
+- [Enable package dependency management with packrat](#enable-package-dependency-management-with-packrat)
 - [Using papermill with Jupyter](#using-papermill-with-jupyter)
 - [Testing Jupyter notebooks with pytest](#testing-jupyter-notebooks-with-pytest)
 - [Automating testing alongside development with CI](#automating-testing-alongside-development-with-ci)
@@ -39,6 +40,62 @@ Before you can begin you need to make sure that you have the following in your w
    - If you aren't familiar with Python and `pip` then just follow the instructions for installing with Anaconda
 - [Install R](https://cran.r-project.org/doc/manuals/r-release/R-admin.html)
 - Install the [R kernel for Jupyter](https://github.com/IRkernel/IRkernel) ([IRkernel](https://irkernel.github.io/))
+
+## Enable package dependency management with [packrat](https://github.com/rstudio/packrat)
+
+The first step in any project should be making sure that the library dependencies are specified and reproducible. This can be done in R with the [packrat](https://rstudio.github.io/packrat/) library.
+
+First install packrat
+
+```
+R -e 'install.packages("packrat")'
+```
+
+Then from your project directory initialize Packrat for your project
+
+```
+R -e 'packrat::init()'
+```
+
+which will determine the R libraries used in your project and then build the list of dependencies for you. This effectively creates an isolated computing environment (known as "virtual environments" it other programming languages).
+
+Running `packrat::init()` results in the directory `packrat` being created with the files `init.R`, `packrat.lock` and `packrat.opts` inside of it. It will additionally also create or edit a project `.Rprofile` and edit any existing `.gitignore` file. The following files should be kept under version control for your project to be reproducible anywhere:
+
+- `.Rprofile`
+- `packrat/init.R`
+- `packrat/packrat.lock`
+- `packrat/packrat.opts`
+
+As you work on your project and use more libraries you can [update your dependencies managed by `packrat`](https://rstudio.github.io/packrat/walkthrough.html) with (inside the R environment)
+
+```
+packrat::snapshot()
+```
+
+which updates `packrat/packrat.lock` and `packrat/packrat.opts`. You can also check if you have introduces new dependencies with
+
+```
+packrat::stats()
+```
+
+If you remove libraries from use that were managed by `packrat` you can check this with
+
+```
+packrat::stats()
+```
+
+and then remove them from `packrat` with
+
+```
+packrat::clean()
+```
+
+to ensure the minimal environment necessary for reproducibility is kept. Checking the status should now show
+
+```
+packrat::stats()
+Up to date.
+```
 
 ## Using [papermill](https://github.com/nteract/papermill) with Jupyter
 

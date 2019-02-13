@@ -38,3 +38,7 @@ rsconnect/
 *.bak
 .ipynb_checkpoints
 *__pycache__
+
+# Packrat
+packrat/lib*/
+packrat/src
