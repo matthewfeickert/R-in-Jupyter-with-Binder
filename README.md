@@ -75,13 +75,13 @@ packrat::snapshot()
 which updates `packrat/packrat.lock` and `packrat/packrat.opts`. You can also check if you have introduces new dependencies with
 
 ```
-packrat::stats()
+packrat::status()
 ```
 
 If you remove libraries from use that were managed by `packrat` you can check this with
 
 ```
-packrat::stats()
+packrat::status()
 ```
 
 and then remove them from `packrat` with
@@ -93,9 +93,17 @@ packrat::clean()
 to ensure the minimal environment necessary for reproducibility is kept. Checking the status should now show
 
 ```
-packrat::stats()
+packrat::status()
 Up to date.
 ```
+
+If you have a `packrat.lock` file that you want to create an environment from that doesn't already exist you can build the environment by running (from the command line)
+
+```
+R -e 'packrat::restore()'
+```
+
+This is one way in which you could setup the same `packrat` environment on a different machine from the Git repository.
 
 ## Using [papermill](https://github.com/nteract/papermill) with Jupyter
 

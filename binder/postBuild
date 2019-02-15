@@ -1,0 +1,4 @@
+# It is easier to have Binder ignore packrat then do packrat::restore()
+# Though this does require manually running install.R
+rm .Rprofile
+Rscript binder/install.R
