@@ -21,9 +21,22 @@ script:
   # Run pytest -s to disable capturing of stdout and see prints
   - pytest
 
+stages:
+  - test
+  - name: binder
+    if: (branch = master) AND (NOT (type IN (pull_request)))
+
 jobs:
   include:
   - r: release
+  - stage: binder
+    before_install: skip
+    install: skip
+    before_script: skip
+    script:
+      # Use Binder build API to trigger repo2docker to build image
+      - curl --connect-timeout 10 --max-time 60 https://mybinder.org/build/gh/matthewfeickert/R-in-Jupyter-with-Binder/master
+    after_success: skip
 
 env:
   global:
