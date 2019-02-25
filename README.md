@@ -47,13 +47,13 @@ The first step in any project should be making sure that the library dependencie
 
 First install packrat
 
-```
+```shell
 R -e 'install.packages("packrat")'
 ```
 
 Then from your project directory initialize Packrat for your project
 
-```
+```shell
 R -e 'packrat::init()'
 ```
 
@@ -68,38 +68,38 @@ Running `packrat::init()` results in the directory `packrat` being created with 
 
 As you work on your project and use more libraries you can [update your dependencies managed by `packrat`](https://rstudio.github.io/packrat/walkthrough.html) with (inside the R environment)
 
-```
+```r
 packrat::snapshot()
 ```
 
 which updates `packrat/packrat.lock` and `packrat/packrat.opts`. You can also check if you have introduces new dependencies with
 
-```
+```r
 packrat::status()
 ```
 
 If you remove libraries from use that were managed by `packrat` you can check this with
 
-```
+```r
 packrat::status()
 ```
 
 and then remove them from `packrat` with
 
-```
+```r
 packrat::clean()
 ```
 
 to ensure the minimal environment necessary for reproducibility is kept. Checking the status should now show
 
-```
+```r
 packrat::status()
-Up to date.
+#> Up to date.
 ```
 
 If you have a `packrat.lock` file that you want to create an environment from that doesn't already exist you can build the environment by running (from the command line)
 
-```
+```shell
 R -e 'packrat::restore()'
 ```
 
@@ -126,13 +126,13 @@ Once you have installed pytest and done some [minimal reading of the docs](https
 
 An example of some very simple tests using papermill is provided in [`tests/test_notebooks.py`](https://github.com/matthewfeickert/R-in-Jupyter-with-Binder/blob/master/tests/test_notebooks.py). Once you read though and understand what the testing file is doing execute the tests with `pytest` in the top level directory of the repo by running
 
-```
+```shell
 pytest
 ```
 
 To see the output that the individual testing functions would normally [print to `stdout`](https://docs.pytest.org/en/latest/capture.html) run with the `-s` flag
 
-```
+```shell
 pytest -s
 ```
 
@@ -194,7 +194,7 @@ To further make your analysis code more robust you can preserve it and make it [
 
 Once you have installed jupytext create a Jupyter config with
 
-```
+```shell
 jupyter notebook --generate-config
 ```
 
